@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: carstore_api
+    build:
+      context: .
+      dockerfile: CarStore.Hexagonal.Presentation.WebApi/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=carstore_db;Username=carstore_user;Password=carstore_password;
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+
+  db:
+    container_name: db
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: carstore_user
+      POSTGRES_PASSWORD: carstore_password
+      POSTGRES_DB: carstore_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - hexagon_carstore_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carstore_user -d carstore_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hexagon_carstore_data:

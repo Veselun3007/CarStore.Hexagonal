@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.CarEntity">
+    <Position X="11" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAQAAAAAAAIAAAAAAAAAAAAAAAAgAAAIAAAA=</HashCode>
+      <FileName>Entities\CarEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.OfferEntity">
+    <Position X="6.5" Y="1" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEIAAEAAQAABAAAACAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\OfferEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.TestDriveRequestEntity">
+    <Position X="6.5" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEIAAAAAAAABAAAAAAAAAAAAAAAABACAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\TestDriveRequestEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.UserEntity">
+    <Position X="0.5" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAIAAEAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\UserEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Offers" />
+      <Property Name="TestDriveRequests" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.ListingEntity">
+    <Position X="6.5" Y="4.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAQwAAAAACAAAECAAAIAAIAAEAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ListingEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Offers" />
+      <Property Name="TestDrives" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
