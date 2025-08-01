@@ -2,7 +2,7 @@
 
 This repository contains a sample implementation of a Car Store system built following Hexagonal Architecture and DDD principles.
 
-## Çì³ñò
+## Content
 
 - [CarStore.Hexagonal](#carstorehexagonal)
 - [Purpose & Learning Goals](#purpose--learning-goals)
