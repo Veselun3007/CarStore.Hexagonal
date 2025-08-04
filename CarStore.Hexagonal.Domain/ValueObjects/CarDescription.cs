@@ -2,25 +2,28 @@
 
 namespace CarStore.Hexagonal.Domain.ValueObjects
 {
-    public readonly struct CarDescription : IValueObject<string>
+    public readonly struct CarDescription : IValueObject
     {
         public string Value { get; }
 
         public CarDescription(string description)
-        {
-            if(string.IsNullOrWhiteSpace(description))
-            {
-                throw new ArgumentNullException(nameof(description));
-            }
-
-            if(!Validate(description))
-            {
-                throw new ArgumentException("Invalid description format.");
-            }
-
+        {          
             Value = description;
+
+            Validate();
         }
 
-        public readonly bool Validate(string description) => description.Length > 50 && description.Length < 512;
+        public void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(Value))
+            {
+                throw new ArgumentNullException("Description cannot be empty");
+            }
+
+            if(Value.Length < 50 || Value.Length > 512)
+            {
+                throw new ArgumentException("Description must contain between 50 and 512 characters.");
+            }
+        }
     }
 }

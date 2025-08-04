@@ -1,7 +1,7 @@
 ﻿namespace CarStore.Hexagonal.Domain.Base
 {
-    public interface IValueObject<TProperty>
+    public interface IValueObject
     {
-        bool Validate(TProperty value);
+        void Validate();
     }
 }

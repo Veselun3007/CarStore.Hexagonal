@@ -3,25 +3,28 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarStore.Hexagonal.Domain.ValueObjects
 {
-    public readonly struct UserEmail : IValueObject<string>
+    public readonly struct UserEmail : IValueObject
     {
         public string Value { get; }
 
         public UserEmail(string email)
         {
-            if(string.IsNullOrWhiteSpace(email))
-            {
-                throw new ArgumentNullException(nameof(email));
-            }
-
-            if(!Validate(email))
-            {
-                throw new ArgumentException("Invalid email format.");
-            }
-
             Value = email;
+
+            Validate();
         }
 
-        public bool Validate(string email) => new EmailAddressAttribute().IsValid(email);
+        public void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(Value))
+            {
+                throw new ArgumentNullException("Email cannot be empty");
+            }
+
+            if(!new EmailAddressAttribute().IsValid(Value))
+            {
+                throw new ArgumentException("Email address format is invalid.");
+            }
+        }
     }
 }

@@ -3,5 +3,7 @@
     public abstract class Entity<TKey>
     {
         public TKey Id { get; set; }
+
+        protected abstract void Validate();
     }
 }

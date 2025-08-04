@@ -64,21 +64,21 @@ namespace CarStore.Hexagonal.Presentation.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPatch]
         public async Task<IActionResult> Post([FromBody] PostListingCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPatch]
         public async Task<IActionResult> Cancel([FromBody] CancelListingCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPatch]
         public async Task<IActionResult> Reopen([FromBody] ReopenListingCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());
@@ -92,14 +92,14 @@ namespace CarStore.Hexagonal.Presentation.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPatch]
         public async Task<IActionResult> AcceptOffer([FromBody] AcceptOfferCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPatch]
         public async Task<IActionResult> DeclineOffer([FromBody] DeclineOfferCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());
@@ -120,7 +120,7 @@ namespace CarStore.Hexagonal.Presentation.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPatch]
         public async Task<IActionResult> ApproveTestDrive([FromBody] ApproveTestDriveCommand request)
         {
             var result = await _mediator.Send(request, new CancellationToken());

@@ -21,5 +21,10 @@ namespace CarStore.Hexagonal.Domain.Entities
             FullName = fullName;
             Email = email;
         }
+
+        protected override void Validate()
+        {
+            // ValueObjects are self-validated. This would be useful for primitive-type properties.
+        }
     }
 }

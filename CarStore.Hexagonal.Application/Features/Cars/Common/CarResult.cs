@@ -21,7 +21,7 @@ namespace CarStore.Hexagonal.Application.Features.Cars.Common
                 Model = car.Model,
                 Vin = car.Vin.Value,
                 PriceUsd = car.Price.Amount,
-                PriceUah = car.Price.ConvertTo(Currency.UAH, Currency.USD).Amount
+                PriceUah = car.Price.ConvertTo(Currency.UAH).Amount
             };
         }
     }

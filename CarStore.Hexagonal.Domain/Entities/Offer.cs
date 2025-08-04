@@ -18,6 +18,8 @@ namespace CarStore.Hexagonal.Domain.Entities
             CreatedAt = DateTime.UtcNow;
             Status = OfferStatus.Pending;
             Price = price;
+
+            Validate();
         }
 
         internal Offer(string offerId, string customerId, Money price, 
@@ -30,9 +32,14 @@ namespace CarStore.Hexagonal.Domain.Entities
             Price = price;
         }
 
-
-        public bool IsRecent(int days) => CreatedAt >= DateTime.UtcNow.AddDays(-days);
-
+        protected override void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(CustomerId))
+            {
+                throw new ArgumentException("CustomerId cannot be empty.");
+            }
+        }
+       
         public void Accept()
         {
             if(Status == OfferStatus.Accepted)
@@ -47,10 +54,12 @@ namespace CarStore.Hexagonal.Domain.Entities
         {
             if(Status == OfferStatus.Decline)
             {
-                return;
+                throw new InvalidOperationException("Offer already declined.");
             }
 
             Status = OfferStatus.Decline;
         }
+
+        public bool IsRecent(int days) => CreatedAt >= DateTime.UtcNow.AddDays(-days);
     }
 }

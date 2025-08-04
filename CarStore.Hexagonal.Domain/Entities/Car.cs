@@ -11,21 +11,14 @@ namespace CarStore.Hexagonal.Domain.Entities
         public Money Price { get; private set; }
 
         public Car(string make, string model, VinCode vin, Money price) 
-        {
-            if(string.IsNullOrWhiteSpace(make))
-            {
-                throw new ArgumentException("Make cannot be empty.");
-            }
-
-            if(string.IsNullOrWhiteSpace(model))
-            {
-                throw new ArgumentException("Model cannot be empty.");
-            }
+        {         
             Id = Guid.NewGuid().ToString();
             Make = make;
             Model = model;
             Vin = vin;
             Price = price;
+
+            Validate();
         } 
 
         public Car(string id, string make, string model, VinCode vin, Money price)
@@ -35,6 +28,21 @@ namespace CarStore.Hexagonal.Domain.Entities
             Model = model;
             Vin = vin;
             Price = price;
+
+            Validate();
+        }
+
+        protected override void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(Make))
+            {
+                throw new ArgumentException("Make cannot be empty.");
+            }
+
+            if(string.IsNullOrWhiteSpace(Model))
+            {
+                throw new ArgumentException("Model cannot be empty.");
+            }
         }
     }
 }

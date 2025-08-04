@@ -18,6 +18,8 @@ namespace CarStore.Hexagonal.Domain.Entities
             RequestedDate = requestedDate;
             CreatedAt = DateTime.UtcNow;
             IsApproved = false;
+
+            Validate();
         }
 
         internal TestDriveRequest(string testDriveId, string listingId, string customerId, 
@@ -29,6 +31,24 @@ namespace CarStore.Hexagonal.Domain.Entities
             RequestedDate = requestedDate;
             CreatedAt = createdAt;
             IsApproved = isApprove;
+        }
+
+        protected override void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(ListingId))
+            {
+                throw new ArgumentException("ListingId cannot be empty.");
+            }
+
+            if(string.IsNullOrWhiteSpace(CustomerId))
+            {
+                throw new ArgumentException("CustomerId cannot be empty.");
+            }
+
+            if(RequestedDate < DateTime.UtcNow.Date)
+            {
+                throw new ArgumentException("Requested date must not be in the past.");
+            }
         }
 
         public void Approve()

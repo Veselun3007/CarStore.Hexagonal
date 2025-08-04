@@ -28,6 +28,8 @@ namespace CarStore.Hexagonal.Domain.Entities
             Description = description;
             CreatedAt = DateTime.UtcNow;
             Status = ListingStatus.Draft;
+
+            Validate();
         }
 
         public Listing(string id, string carId, string dealerId, Money listedPrice, CarDescription description)
@@ -37,6 +39,8 @@ namespace CarStore.Hexagonal.Domain.Entities
             DealerId = dealerId;
             ListedPrice = listedPrice;
             Description = description;
+
+            Validate();
         }
 
         internal Listing(string id, string carId, string dealerId,
@@ -53,6 +57,19 @@ namespace CarStore.Hexagonal.Domain.Entities
 
             _offers.AddRange(offers);
             _testDrives.AddRange(testDrives);
+        }
+
+        protected override void Validate()
+        {
+            if(string.IsNullOrWhiteSpace(CarId))
+            {
+                throw new ArgumentException("CarId cannot be empty.");
+            }
+
+            if(string.IsNullOrWhiteSpace(DealerId))
+            {
+                throw new ArgumentException("DealerId cannot be empty.");
+            }
         }
 
         public void Post()
@@ -166,7 +183,7 @@ namespace CarStore.Hexagonal.Domain.Entities
                 }
             }
 
-            Apply(new OfferAccepted
+            Apply(new Events.OfferAccepted
             {
                 ListingId = Id,
                 OfferId = offer.Id,
@@ -180,7 +197,7 @@ namespace CarStore.Hexagonal.Domain.Entities
         {
             switch(@event)
             {
-                case OfferAccepted:
+                case Events.OfferAccepted:
                     Status = ListingStatus.Completed;
                     break;
 

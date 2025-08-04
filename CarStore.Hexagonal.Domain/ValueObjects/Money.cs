@@ -4,7 +4,7 @@ using CarStore.Hexagonal.Domain.Enums;
 
 namespace CarStore.Hexagonal.Domain.ValueObjects
 {
-    public readonly struct Money : IValueObject<decimal>
+    public readonly struct Money : IValueObject
     {
         public decimal Amount { get; }
         public Currency Currency { get; }
@@ -20,23 +20,26 @@ namespace CarStore.Hexagonal.Domain.ValueObjects
         }
 
         public Money(decimal amount, Currency currency, decimal? appliedDiscountPercent = null)
+        {            
+            Amount = amount;
+            Currency = currency;
+            DiscountPercent = appliedDiscountPercent;
+
+            Validate();
+        }
+
+        public void Validate()
         {
-            if(!Validate(amount))
+            if(Amount < 0)
             {
                 throw new ArgumentException("Amount must be non-negative.");
             }
 
-            if(appliedDiscountPercent is < 0 or > 100)
+            if(DiscountPercent is < 0 or > 100)
             {
                 throw new ArgumentException("Discount must be between 0 and 100.");
             }
-
-            Amount = amount;
-            Currency = currency;
-            DiscountPercent = appliedDiscountPercent;
         }
-
-        public readonly bool Validate(decimal value) => value >= 0;
 
         public Money ApplyDiscount(decimal percent)
         {
@@ -50,19 +53,17 @@ namespace CarStore.Hexagonal.Domain.ValueObjects
                 return this;
             }
 
-            var discounted = Amount * (1 - percent / 100m);
-            var rounded = decimal.Round(discounted, 2, MidpointRounding.AwayFromZero);
-            return new Money(rounded, Currency, percent);
+            return new Money(Amount, Currency, percent);
         }
 
-        public Money ConvertTo(Currency targetCurrency, Currency baseCurrency = Currency.USD)
+        public Money ConvertTo(Currency targetCurrency)
         {
             if(Currency == targetCurrency)
             {
                 return this;
             }
 
-            var rate = CurrencyConverter.GetRate(baseCurrency, targetCurrency);
+            var rate = CurrencyConverter.GetRate(Currency, targetCurrency);
             var converted = Amount * rate;
             return new Money(decimal.Round(converted, 2), targetCurrency, DiscountPercent);
         }
