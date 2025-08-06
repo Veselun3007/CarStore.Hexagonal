@@ -1,5 +1,4 @@
-﻿using CarStore.Hexagonal.Domain.Enums;
-using MediatR;
+﻿using MediatR;
 
 namespace CarStore.Hexagonal.Application.Features.Listings.Commands.AddListing
 {
@@ -8,7 +7,6 @@ namespace CarStore.Hexagonal.Application.Features.Listings.Commands.AddListing
         public string CarId { get; set; }
         public string DealerId { get; set; }
         public decimal ListedPrice { get; set; }
-        public ListingStatus Status { get; set; }
         public string Description { get; set; }
         public decimal? Discount { get; set; }
     }

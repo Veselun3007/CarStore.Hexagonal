@@ -44,11 +44,6 @@ namespace CarStore.Hexagonal.Domain.Entities
             {
                 throw new ArgumentException("CustomerId cannot be empty.");
             }
-
-            if(RequestedDate < DateTime.UtcNow.Date)
-            {
-                throw new ArgumentException("Requested date must not be in the past.");
-            }
         }
 
         public void Approve()

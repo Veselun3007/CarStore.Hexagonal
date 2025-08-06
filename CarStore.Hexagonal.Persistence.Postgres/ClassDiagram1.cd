@@ -10,19 +10,19 @@
   <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.OfferEntity">
     <Position X="6.5" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAEIAAEAAQAABAAAACAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEIAAAAAQAABAAAACAAAAAAAAAAABAAAAAABAAAAAA=</HashCode>
       <FileName>Entities\OfferEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.TestDriveRequestEntity">
     <Position X="6.5" Y="7.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAEIAAAAAAAABAAAAAAAAAAAAAAAABACAAAAEAAAAAA=</HashCode>
+      <HashCode>AAEIAAAAAAAABAAAACAAAAAAAAAAABACAAAAEAAAAAA=</HashCode>
       <FileName>Entities\TestDriveRequestEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.UserEntity">
-    <Position X="0.5" Y="5" Width="3.5" />
+    <Position X="0.5" Y="4.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAQAIAAEAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Entities\UserEntity.cs</FileName>
@@ -30,6 +30,7 @@
     <ShowAsCollectionAssociation>
       <Property Name="Offers" />
       <Property Name="TestDriveRequests" />
+      <Property Name="Listings" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="CarStore.Hexagonal.Persistence.Postgres.Entities.ListingEntity">

@@ -1,14 +1,13 @@
 version: '3.9'
 
 services:
-  api:
-    container_name: carstore_api
+  api_rest:
+    container_name: carstore_api_rest
     build:
       context: .
       dockerfile: CarStore.Hexagonal.Presentation.WebApi/Dockerfile
     ports:
       - "8080:8080"
-      - "8081:8081"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=carstore_db;Username=carstore_user;Password=carstore_password;
@@ -16,6 +15,25 @@ services:
       db:
         condition: service_healthy
     restart: on-failure
+    profiles:
+      - rest
+
+  api_graphql:
+    container_name: carstore_api_graphql
+    build:
+      context: .
+      dockerfile: CarStore.Hexagonal.Presentation.GraphQL/Dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=carstore_db;Username=carstore_user;Password=carstore_password;
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    profiles:
+      - graphql
 
   db:
     container_name: db
