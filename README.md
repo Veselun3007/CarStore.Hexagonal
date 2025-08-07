@@ -4,6 +4,8 @@ This repository contains a sample implementation of a Car Store system built fol
 
 ## Content
 
+## Content
+
 - [CarStore.Hexagonal](#carstorehexagonal)
 - [Purpose & Learning Goals](#purpose--learning-goals)
 - [Tasks](#tasks)
@@ -14,6 +16,14 @@ This repository contains a sample implementation of a Car Store system built fol
   - [Domain Events](#domain-events)
 - [Persistence & EF Core Summary](#persistence--ef-core-summary)
 - [CQRS & MediatR Integration Summary](#cqrs--mediatr-integration-summary)
+- [GraphQL & gRPC Integration Summary](#graphql--grpc-integration-summary)
+  - [GraphQL](#graphql)
+  - [gRPC](#grpc)
+- [Running the Application](#running-the-application)
+  - [Run REST API](#run-rest-api)
+  - [Run GraphQL API](#run-graphql-api)
+  - [Run gRPC API](#run-grpc-api)
+
 
 ## Purpose & Learning Goals
 
