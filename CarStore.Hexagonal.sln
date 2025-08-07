@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Hexagonal.Presentation.GraphQl", "CarStore.Hexagonal.Presentation.GraphQl\CarStore.Hexagonal.Presentation.GraphQl.csproj", "{26D0E413-E1D6-49B2-9843-7E15EC226F5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Hexagonal.Presentation.Grpc", "CarStore.Hexagonal.Presentation.Grpc\CarStore.Hexagonal.Presentation.Grpc.csproj", "{6BFFA576-CC95-46D5-97C6-F85B6C3FFCAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{26D0E413-E1D6-49B2-9843-7E15EC226F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D0E413-E1D6-49B2-9843-7E15EC226F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D0E413-E1D6-49B2-9843-7E15EC226F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BFFA576-CC95-46D5-97C6-F85B6C3FFCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFFA576-CC95-46D5-97C6-F85B6C3FFCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BFFA576-CC95-46D5-97C6-F85B6C3FFCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BFFA576-CC95-46D5-97C6-F85B6C3FFCAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

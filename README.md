@@ -27,7 +27,7 @@ This repository contains a sample implementation of a Car Store system built fol
 - Develop a solution according to Hexagonal (Ports & Adapters) architecture.
 - Design application domain.
 - Add CQRS to the application.
-
+- Get familiar with GraphQL and gRPC technologies
 
 ## Domain Components Overview
 
@@ -142,4 +142,81 @@ The application now follows the CQRS (Command Query Responsibility Segregation) 
 - Clear separation of read and write responsibilities.
 - Commands encapsulate business rules and coordinate domain behavior.
 - Improved maintainability, scalability, and testability.
+
+## GraphQL & gRPC Integration Summary
+
+To get familiar with alternative API technologies, the project includes basic integration of **GraphQL** and **gRPC** alongside the primary REST-based communication. These were implemented in a limited scope for learning purposes.
+
+### GraphQL
+
+GraphQL is integrated using the **HotChocolate** library to enable flexible data querying and mutation capabilities.
+
+- **Scope**: Focused on basic `query` and `mutation` operations for selected domain entities.
+- **Implemented**:
+  - Queries for retrieving `Car`, `User`, and `Listing` data.
+  - Mutations for creating new `Car`, `User`, and `Listing` entries.
+
+### gRPC
+
+gRPC is used to experiment with lightweight and efficient service communication using Protocol Buffers (protobuf).
+
+- **Scope**: Covers basic `get`, `add`, and `delete` operations for selected entities.
+- **Implemented**:
+  - Simple service definitions for `Car`, `User`, and `Listing` entities.
+  - Basic endpoints for retrieving and modifying data.
+
+> [!IMPORTANT]
+> All the scenarios provided are implemented for the REST API.  
+> GraphQL and gRPC cover only selected operations for learning purposes.
+
+## Running the Application
+
+Make sure Docker is installed and running. 
+Use `--profile` to run only the service you want (REST, GraphQL, or gRPC).
+
+### Run REST API
+
+To run the project locally using Docker, use the following command:
+
+```powershell
+docker compose --profile rest up --build
+```
+
+After a successful build, navigate to Swagger UI to interact with the API:
+
+```text
+http://localhost:8080/swagger
+```
+
+---
+
+### Run GraphQL API
+
+To run the GraphQL API, use:
+
+```powershell
+docker compose --profile graphql up --build
+```
+
+After a successful build, you can access API here:
+
+```text
+http://localhost:8081/graphql
+```
+
+---
+
+### Run gRPC API
+
+To run the gRPC service, use:
+
+```powershell
+docker compose --profile grpc up --build
+```
+
+After a successful build, you can access API here:
+
+```text
+http://localhost:8082
+```
 

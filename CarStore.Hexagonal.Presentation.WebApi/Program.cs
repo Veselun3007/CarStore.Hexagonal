@@ -2,6 +2,7 @@ using CarStore.Hexagonal.Application;
 using CarStore.Hexagonal.Persistence.Postgres;
 using CarStore.Hexagonal.Presentation.WebApi.Middleware;
 using CarStore.Hexagonal.Presentation.WebApi.SwaggerTests;
+
 namespace CarStore.Hexagonal.Presentation.WebApi
 {
     public class Program

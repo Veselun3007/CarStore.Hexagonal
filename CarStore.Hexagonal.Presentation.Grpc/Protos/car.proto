@@ -1,0 +1,47 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CarStore.Hexagonal.Presentation.Grpc";
+
+package car;
+
+service CarGrpcService {
+  rpc GetAllCars (GetAllCarsRequest) returns (GetAllCarsResponse);
+  rpc GetCarById (GetCarByIdRequest) returns (CarResponse); 
+
+  rpc AddCar (AddCarRequest) returns (CarResponse);
+  rpc DeleteCar (DeleteCarRequest) returns (DeleteCarResponse);
+}
+
+message GetAllCarsRequest {}
+
+message GetCarByIdRequest {
+  string car_id = 1;
+}
+
+message AddCarRequest {
+  string make = 1;
+  string model = 2;
+  string vin = 3;
+  double price = 4;
+}
+
+message DeleteCarRequest{
+	string car_id = 1;
+}
+
+message DeleteCarResponse{
+	string message = 1;
+}
+
+message CarResponse {
+  string car_id = 1;
+  string make = 2;
+  string model = 3;
+  string vin = 4;
+  double price_usd = 5;
+  double price_uah = 6;
+}
+
+message GetAllCarsResponse {
+  repeated CarResponse cars = 1;
+}

@@ -35,6 +35,23 @@ services:
     profiles:
       - graphql
 
+  api_grpc:
+    container_name: carstore_api_grpc
+    build:
+      context: .
+      dockerfile: CarStore.Hexagonal.Presentation.Grpc/Dockerfile
+    ports:
+      - "8082:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=carstore_db;Username=carstore_user;Password=carstore_password;
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    profiles:
+      - grpc
+
   db:
     container_name: db
     image: postgres:16

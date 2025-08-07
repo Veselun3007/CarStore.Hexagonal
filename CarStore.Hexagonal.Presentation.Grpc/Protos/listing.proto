@@ -1,0 +1,68 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CarStore.Hexagonal.Presentation.Grpc";
+
+package listing;
+
+service ListingGrpcService {
+  rpc GetAllListing (GetAllListingRequest) returns (GetAllListingsResponse);
+  rpc GetListingById (GetListingByIdRequest) returns (ListingResponse);
+
+  rpc AddListing (AddListingRequest) returns (ListingResponse);
+  rpc DeleteListing (DeleteListingRequest) returns (DeleteListingResponse);
+}
+
+message GetAllListingRequest {}
+
+message GetListingByIdRequest {
+  string listing_id = 1;
+}
+
+message AddListingRequest {
+  string car_id = 1;
+  string dealer_id = 2;
+  double listed_price = 3;
+  string description = 4;
+  double discount = 5; 
+}
+
+message DeleteListingRequest {
+  string listing_id = 1;
+}
+
+message DeleteListingResponse {
+  string message = 1;
+}
+
+message ListingResponse {
+  string listing_id = 1;
+  string car_id = 2;
+  string dealer_id = 3;
+  double listed_price = 4;
+  string description = 5;
+  string created_at = 6; 
+  string status = 7;
+  repeated Offer offers = 8;
+  repeated TestDriveRequest test_drives = 9;
+}
+
+message Offer {
+  string offer_id = 1;
+  string customer_id = 2;
+  string created_at = 3; 
+  double price = 4;
+  string status = 5;
+}
+
+message TestDriveRequest {
+  string test_drive_request_id = 1;
+  string listing_id = 2;
+  string customer_id = 3;
+  string created_at = 4; 
+  string requested_date = 5; 
+  bool is_approved = 6;
+}
+
+message GetAllListingsResponse {
+  repeated ListingResponse listings = 1;
+}
